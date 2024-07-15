@@ -10,6 +10,7 @@ const questions = [
         ]
 
     },
+
     {
         question: "Which house was professor sprout the dorm master? ",
         answers: [
@@ -19,6 +20,7 @@ const questions = [
             { text:"Slytherin", correct: false},
         ]
     },
+
     {
         question: "Which one is not an ingredient of the polyjuice potion? ",
         answers: [
@@ -28,6 +30,7 @@ const questions = [
             { text:"Flux Weed", correct: false},
         ] 
     },
+
     {
         question: "Who was the Quidditch captain in Harry's First Year? ",
         answers: [
@@ -37,4 +40,36 @@ const questions = [
             { text:"Mundungus Fletcher", correct: false},
         ]
     }
-]
+
+];
+
+const questionElement = document.getElementById("question");
+const answerButton = document.getElementById("answer-button");
+const nextButton = document.getElementById("next-button");
+
+//create variable to create a question index and store the score
+let currentQuestionIndex = 0;
+let score =0;
+
+function startQuiz(){
+    currentQuestionIndex = 0;
+    score = 0;
+    nextButton.innerHTML = "Next";
+    showQuestion();
+}
+
+function showQuestion(){
+    let currentQuestion = questions[currentQuestionIndex];
+    let questionNo = currentQuestionIndex + 1;
+    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+
+    //Display the answer
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerHTML = answer.text;
+        button.classList.add("btn");
+        answerButton.appendChild(button);
+    });
+}
+
+startQuiz();
