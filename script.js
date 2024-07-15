@@ -59,6 +59,10 @@ function startQuiz(){
 }
 
 function showQuestion(){
+    //reset the previous state
+    resetState();
+
+    //Diplay the question
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
@@ -69,7 +73,36 @@ function showQuestion(){
         button.innerHTML = answer.text;
         button.classList.add("btn");
         answerButton.appendChild(button);
+
+        //add true or false to the dataset
+        if (answer.correct) {
+            button.dataset.correct = answer.correct;
+        }
+
+        //click function -> event listener when a mouse is clicked on the answer of the question
+        button.addEventListener("click", selectAnswer);
+
     });
 }
 
+//Functions that removes answers from display 
+function resetState() {
+    nextButton.style.display = "none";
+    while (answerButton.firstChild) {
+        answerButton.removeChild(answerButton.firstChild);
+    }
+}
+
+//selection function event
+function selectAnswer(e){
+    const selectedButton = e.target;
+    const isCorrect = selectedButton.dataset.correct === "true";
+    if (isCorrect) {
+        selectedButton.classList.add("correct");
+    } else {
+        selectedButton.classList.add("incorrect");
+    }
+}
+
+//display output -> call the first question index and the answers options
 startQuiz();
