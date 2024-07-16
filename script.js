@@ -102,6 +102,14 @@ function selectAnswer(e){
     } else {
         selectedButton.classList.add("incorrect");
     }
+    //function to  disable multiple clicks and highlight the correct answer if a wrong one is selected 
+    Array.from(answerButton.children).array.forEach(button => {
+        if (button.dataset.correct === "true"){
+            button.classList.add("correct");
+        }
+        button.disabled =true;
+    });
+    nextButton.style.display = "block";
 }
 
 //display output -> call the first question index and the answers options
