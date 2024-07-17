@@ -103,7 +103,7 @@ function selectAnswer(e){
         selectedButton.classList.add("incorrect");
     }
     //function to  disable multiple clicks and highlight the correct answer if a wrong one is selected 
-    Array.from(answerButton.children).array.forEach(button => {
+    Array.from(answerButton.children).forEach(button => {
         if (button.dataset.correct === "true"){
             button.classList.add("correct");
         }
