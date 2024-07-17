@@ -99,6 +99,9 @@ function selectAnswer(e){
     const isCorrect = selectedButton.dataset.correct === "true";
     if (isCorrect) {
         selectedButton.classList.add("correct");
+
+        //increase score
+        score ++;
     } else {
         selectedButton.classList.add("incorrect");
     }
@@ -111,6 +114,32 @@ function selectAnswer(e){
     });
     nextButton.style.display = "block";
 }
+
+//function to show score
+function  showScore(){
+    resetState();
+    questionElement.innerHTML = `Your Scored ${score} out of ${questions.length}!`;
+    nextButton.innerHTML = "Play Again";
+    nextButton.style.display = "block";
+};
+
+function handleButton() {
+    currentQuestionIndex ++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else {
+        showScore();
+    }
+};
+
+//event listener to retry and play the game again after completeing all questions
+nextButton.addEventListener("click", ()=>{
+    if(currentQuestionIndex < questions.length) {
+        handleButton();
+    } else {
+        startQuiz ();
+    }
+})
 
 //display output -> call the first question index and the answers options
 startQuiz();
