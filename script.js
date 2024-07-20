@@ -39,6 +39,15 @@ const questions = [
             { text:"Oliver Wood", correct: true},
             { text:"Mundungus Fletcher", correct: false},
         ]
+    },
+    {
+        question: "'I must not tell lies? '- Who famously said these words?" ,
+        answers: [
+            { text:"Draco Malfoy", correct: false},
+            { text:"Barty Crouch Jnr", correct: false},
+            { text:"Ronald Weasly", correct: false},
+            { text:"Dolores Umbridge", correct: true},
+        ]
     }
 
 ];
